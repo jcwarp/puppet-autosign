@@ -29,10 +29,10 @@ class autosign::install {
   }
 
   file { "${autosign::journalpath}/autosign.journal":
-    ensure  => $config_ensure,
-    mode    => '0640',
-    owner   => $::autosign::user,
-    group   => $::autosign::group,
+    ensure => $config_ensure,
+    mode   => '0640',
+    owner  => $::autosign::user,
+    group  => $::autosign::group,
   }
 
 }

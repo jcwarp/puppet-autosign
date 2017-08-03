@@ -34,7 +34,7 @@ class autosign::params {
       $group = 'puppet'
     }
     /^[45]\.\d+\.\d+$/: {
-      if $pe_build {
+      if $::pe_build {
         $gem_provider = 'puppet_gem'
         $user = 'pe-puppet'
         $group = 'pe-puppet'
