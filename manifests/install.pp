@@ -15,6 +15,11 @@ class autosign::install {
       default           => 'directory',
   }
 
+  $config_ensure = $::autosign::ensure ? {
+      /(absent|purged)/ => 'absent',
+      default           => 'present',
+  }
+
   # the autosign key journal stores previously-used tokens to prevent re-use
   file {$::autosign::journalpath:
     ensure => $dir_ensure,
@@ -22,4 +27,12 @@ class autosign::install {
     owner  => $::autosign::user,
     group  => $::autosign::group,
   }
+
+  file { "${autosign::journalpath}/autosign.journal":
+    ensure  => $config_ensure,
+    mode    => '0640',
+    owner   => $::autosign::user,
+    group   => $::autosign::group,
+  }
+
 }
