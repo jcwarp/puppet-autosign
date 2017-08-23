@@ -35,7 +35,7 @@ class autosign::install {
     group  => $::autosign::group,
   }
 
-  file { $autosign::config::settings[general][logfile]:
+  file { "${autosign::params::settings[general][logfile]}":
     ensure => $config_ensure,
     mode   => '0640',
     owner  => $::autosign::user,
